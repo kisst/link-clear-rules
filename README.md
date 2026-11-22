@@ -1,24 +1,73 @@
-<a href="https://www.paypal.me/KevinRoebert" target="_blank"><img src="https://raw.githubusercontent.com/KevinRoebert/DonateButtons/master/Paypal.png" alt="Buy Me A Coffee" height="55"></a>
-<a href="https://www.buymeacoffee.com/KevinRoebert" target="_blank"><img src="https://raw.githubusercontent.com/KevinRoebert/DonateButtons/master/BuyMeACoffee.png" alt="Buy Me A Coffee" height="55"></a>
+# Link Clear rules
 
-[<img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="for Firefox" height="60px">](https://addons.mozilla.org/firefox/addon/clearurls/) [<img src="https://docs.clearurls.xyz/1.22.0/assets/img/MEA-button.png" alt="for Edge" height="60px">](https://microsoftedge.microsoft.com/addons/detail/mdkdmaickkfdekbjdoojfalpbkgaddei)
+URL-cleaning rules for the [Link Clear](https://github.com/kisst/link-clear)
+Android app. This is a fork of the
+[ClearURLs rules](https://gitlab.com/ClearURLs/rules), with the full upstream
+history, kept in sync with upstream and extended with rules that upstream does
+not (yet) have.
 
-# <sub><img src="https://gitlab.com/KevinRoebert/ClearUrls/raw/master/img/clearurls.svg" width="64px" height="64px"></sub> ClearURLs Rules
+The format is unchanged: `data.min.json` follows the
+[ClearURLs rules specification](https://docs.clearurls.xyz/latest/specs/rules/),
+so anything that reads ClearURLs rules can read these.
 
-**ClearURLs** is an add-on based on the new WebExtensions technology and is optimized for *Firefox* and *Chrome* based browsers.
+## Download
 
-This repo manages the rules for the ClearURLs addon. By using the GitLab and GitHub CI/CD, we automatically create checksum files for the rules and make them available through GitLab and GitHub Pages.
+Published to GitHub Pages by CI, only after validation passes:
 
-## Contribute
-If you have any suggestions or complaints, please [create an issue](https://gitlab.com/anti-tracking/ClearURLs/rules/-/issues/new) or email us rules.support (at) clearurls.xyz (this mail will automatically create a new issue in this repo).
+| File | URL |
+|------|-----|
+| Rules | <https://kisst.github.io/link-clear-rules/data.min.json> |
+| Rules (minified) | <https://kisst.github.io/link-clear-rules/data.minify.json> |
+| SHA-256 hashes | `rules.min.hash`, `rules.minify.hash` at the same location |
+| Source commit | <https://kisst.github.io/link-clear-rules/commit.txt> |
 
-## Download Rules
-The rules and the corresponding hash file are available on GitLab and GitHub Pages under the following URLs:
+Link Clear bundles a copy of `data.min.json` and, when the user taps "Update
+rules now", downloads `data.min.json` from the URL above.
 
-### GitLab
-- data.minify.json: https://rules1.clearurls.xyz/data.minify.json
-- rules.minify.hash: https://rules1.clearurls.xyz/rules.minify.hash
+## How this repo relates to ClearURLs
 
-### GitHub
-- data.minify.json: https://rules2.clearurls.xyz/data.minify.json
-- rules.minify.hash: https://rules2.clearurls.xyz/rules.minify.hash
+- **Upstream:** `gitlab.com/ClearURLs/rules`, branch `master`. Our default
+  branch is `main`.
+- **Syncing:** a weekly workflow (`upstream-sync.yml`) opens a PR from the
+  `upstream-sync` branch when upstream has new commits. It reports whether the
+  merge is clean and passes validation. A maintainer reviews and merges it
+  with a merge commit, so upstream history stays intact.
+- **Our additions:** new providers are appended at the end of `data.min.json`,
+  following upstream's contributing rules, so they can also be offered
+  upstream. When upstream ships an equivalent provider, we drop ours in the
+  sync PR.
+- **Files changed from upstream:** this README, `CONTRIBUTING.md`, the GitHub
+  workflows, and `build_tools/validateLinkClear.cjs` / `build_tools/index.html`.
+  Upstream's `CNAME`, GitHub Pages deploy workflow, funding and lockdown
+  config were removed because they belong to upstream's own infrastructure.
+
+Additions so far:
+
+| Provider | Why | Upstream |
+|----------|-----|----------|
+| `temu.com` | Product links carry about a dozen tracking parameters | [ClearURLs/Rules#177](https://github.com/ClearURLs/Rules/issues/177) |
+
+## Validation
+
+`build_tools/validateLinkClear.cjs` runs on every push and PR, alongside
+upstream's own tests. It requires:
+
+- a `providers` object with 50 to 5000 providers (the same band the app
+  enforces on downloads);
+- the long-standing providers `globalRules`, `google` and `amazon`, plus
+  `temu.com`;
+- every `urlPattern`, `rules`, `rawRules`, `referralMarketing`, `exceptions`
+  and `redirections` entry to compile as a regular expression.
+
+Run it locally with Node 20 (for example in Docker):
+
+```bash
+node build_tools/validateLinkClear.cjs data.min.json
+node --test tests/*.test.cjs
+```
+
+## License and credits
+
+The rules are © Kevin Röbert and the ClearURLs contributors, plus the
+contributors to this fork, and licensed under the
+[GNU LGPL-3.0](LICENSE), the same as upstream.

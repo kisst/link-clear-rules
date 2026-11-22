@@ -1,100 +1,28 @@
-# Contribution Guidelines
+# Contributing
 
-Thank you for your interest in contributing to ClearURLs! To keep our codebase secure, maintainable, and reviewable, please follow these guidelines when submitting Merge/Pull Requests.
+Thanks for helping keep links clean.
 
-## Table of Contents
+## Adding or changing rules
 
-1. [Getting Started](#getting-started)
-2. [Branching and Pull Requests](#branching-and-pull-requests)
-3. [Modifying Rules](#modifying-rules)
-4. [Adding New Rules](#adding-new-rules)
-5. [Testing Your Changes](#testing-your-changes)
-6. [Merge Request Size and Organization](#merge-request-size-and-organization)
-7. [Commit Messages](#commit-messages)
-8. [Security Considerations](#security-considerations)
-9. [Review Process](#review-process)
+1. Open a PR against `main` here on GitHub.
+2. **Append** new providers at the end of `data.min.json`. Don't move or
+   reformat existing ones; that keeps upstream syncs conflict-free and lets
+   additions be offered upstream as-is.
+3. Follow the [rules specification](https://docs.clearurls.xyz/latest/specs/rules/).
+4. In the PR, include an example URL with the tracking parameters and the
+   cleaned URL you expect. Say which parameters are functional and must stay.
+5. Keep PRs small: one site per PR.
+6. CI must pass (see "Validation" in the README).
 
----
+## Fixing an upstream rule
 
-## Getting Started
+If a fix applies to a provider that came from ClearURLs, please also report it
+upstream at <https://gitlab.com/ClearURLs/rules> so everyone benefits. We can
+carry the fix here in the meantime.
 
-1. Fork the repository and create a new branch for your work.
-2. Sync with the upstream `master` branch regularly to avoid merge conflicts:
-   ```bash
-   git fetch upstream
-   git checkout master
-   git merge upstream/master
-   ```
-3. Create a topic branch with a descriptive name:
-   ```bash
-   git checkout -b add-new-tracking-rule
-   ```
+## Syncing upstream
 
-## Branching and Pull Requests
-
-- Use feature branches for each logical set of changes.
-- Don’t work directly on `master`.
-- Open a Merge Request (MR) / Pull Request (PR) against `master` when your feature branch is ready.
-
-## Modifying Rules
-
-> **Important:** Do **not** move, delete, or heavily modify existing rules in a single MR.
-
-- Existing rules in `rules.json` and `rules.min.json` must remain untouched. This prevents accidental removals and helps reviewers focus on new content.
-- If you need to refactor or clean up existing rules, create a dedicated MR for that purpose.
-
-## Adding New Rules
-
-1. **Append only:** Add new rules at the *end* of the file. Do not interleave with existing rules.
-2. **Rule format:** Follow the JSON schema and naming conventions exactly. See also https://docs.clearurls.xyz/latest/specs/rules/
-3. **Documentation:** For each new rule, include:
-   - A short description of its purpose.
-   - An example URL containing the tracking parameter(s) you intend to remove.
-   - (Optional) A brief note on any edge cases or limitations.
-
-## Testing Your Changes
-
-Add declared redirects to `redirectRules` in `data.min.json`. Each entry needs
-a unique ID within its provider. Legacy add-ons continue to read `redirections`
-from the same feed. Run the catalog checks before submitting a change.
-
-```sh
-node build_tools/minifyDataJSON.js data.min.json /tmp/clearurls-data.minify.json
-node build_tools/checkRedirectRules.cjs data.min.json /tmp/clearurls-data.minify.json
-node --test tests/*.test.cjs
-```
-
-The redirect check validates declared rules with the pinned add-on compiler,
-checks capture references against the regex, and verifies that the minified
-feed preserves the declarations and their order.
-
-When the add-on compiler changes, refresh its generated snapshot and digest
-from a sibling `ClearUrls` checkout by running
-`node build_tools/loadRedirectCompiler.cjs --sync` from this repository.
-
-## Merge Request Size and Organization
-
-- **Keep MRs small and focused.** Aim for fewer than 200 lines of net additions per MR.
-- **One topic per MR:** Group related rules together (e.g., all rules for a given domain).
-- If you have a large number of rules to add, split them into multiple MRs.
-
-## Commit Messages
-
-- Write clear, imperative commit messages.
-- Reference issue numbers when applicable: `Add rule for example.com (#123)`.
-
-## Security Considerations
-
-- ClearURLs is distributed as a browser extension and integrated into multiple applications, so any faulty or malicious rule could impact hundreds of thousands of users worldwide.
-- **Avoid large, unreviewable diffs:** split your changes into focused MRs so reviewers can thoroughly inspect each rule and prevent potential security issues.
-
-## Review Process
-
-- After opening an MR / PR, it will be assigned to a maintainer for review.
-- Respond promptly to review comments and clarify any questions.
-- Once approved and all CI checks pass, your MR will be merged.
-
----
-
-We appreciate your contributions and efforts to keep ClearURLs secure and efficient! If you have any questions, feel free to open an issue or ask in the discussion channels.
-
+Maintainers: review the weekly "Sync from upstream ClearURLs" PR. Resolve any
+conflicts on the `upstream-sync` branch. Keep upstream's deleted
+infrastructure files (`CNAME`, `.github/workflows/deploy.yml`, funding and
+lockdown config) deleted, then merge with a merge commit.

@@ -1,0 +1,62 @@
+name: Validate and publish rules
+
+# Every push and PR is validated. Only main is published, and only after
+# validation passes, so a bad commit never reaches the URL the app downloads.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate rules
+        run: |
+          node build_tools/validateLinkClear.cjs data.min.json
+          node --test tests/*.test.cjs
+
+      - name: Build site
+        run: |
+          mkdir public
+          cp data.min.json public/data.min.json
+          node build_tools/minifyDataJSON.js public/data.min.json public/data.minify.json
+          node build_tools/checkRedirectRules.cjs public/data.min.json public/data.minify.json
+          node build_tools/validateLinkClear.cjs public/data.minify.json
+          cp build_tools/index.html public/index.html
+          cd public
+          sha256sum data.min.json | awk '{print $1}' > rules.min.hash
+          sha256sum data.minify.json | awk '{print $1}' > rules.minify.hash
+          printf '%s\n' "$GITHUB_SHA" > commit.txt
+          touch .nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

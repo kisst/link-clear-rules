@@ -1,0 +1,89 @@
+name: Sync from upstream ClearURLs
+
+# Weekly: if ClearURLs (gitlab.com/ClearURLs/rules) has commits we don't, push
+# them to the `upstream-sync` branch and open (or refresh) a PR into main.
+# Nothing is merged automatically; a maintainer reviews and merges.
+#
+# PRs opened with the workflow token don't trigger other workflows, so this job
+# runs the same validation on the would-be merge result itself and reports it
+# in the PR body. Merging the PR then triggers the normal publish workflow,
+# which validates again before anything is published.
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch upstream
+        id: fetch
+        run: |
+          git remote add upstream https://gitlab.com/ClearURLs/rules.git
+          git fetch --quiet upstream master
+          if git merge-base --is-ancestor upstream/master HEAD; then
+            echo "behind=false" >> "$GITHUB_OUTPUT"
+            echo "Up to date with upstream."
+          else
+            echo "behind=true" >> "$GITHUB_OUTPUT"
+            git log --oneline HEAD..upstream/master | tee "$RUNNER_TEMP/commits.txt"
+          fi
+
+      - name: Trial merge and validate
+        if: steps.fetch.outputs.behind == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          if git merge --no-edit --quiet upstream/master; then
+            if node build_tools/validateLinkClear.cjs data.min.json > "$RUNNER_TEMP/validate.txt" 2>&1 \
+              && node --test tests/*.test.cjs >> "$RUNNER_TEMP/validate.txt" 2>&1; then
+              echo "✅ Merges cleanly and passes validation." > "$RUNNER_TEMP/status.txt"
+            else
+              echo "❌ Merges cleanly but **fails validation**; see the output below." > "$RUNNER_TEMP/status.txt"
+            fi
+          else
+            git diff --name-only --diff-filter=U > "$RUNNER_TEMP/validate.txt"
+            echo "⚠️ **Merge conflicts** in the files below; resolve them on this branch before merging." > "$RUNNER_TEMP/status.txt"
+            git merge --abort
+          fi
+
+      - name: Open or update PR
+        if: steps.fetch.outputs.behind == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git push --force origin upstream/master:refs/heads/upstream-sync
+          {
+            echo "Automated sync from [ClearURLs/rules](https://gitlab.com/ClearURLs/rules) \`master\`."
+            echo
+            cat "$RUNNER_TEMP/status.txt"
+            echo
+            echo "### New upstream commits"
+            echo '```'
+            cat "$RUNNER_TEMP/commits.txt"
+            echo '```'
+            echo "### Validation"
+            echo '```'
+            tail -n 40 "$RUNNER_TEMP/validate.txt"
+            echo '```'
+            echo "Review the rule changes, then merge with a merge commit (not squash) so upstream history is kept."
+          } > "$RUNNER_TEMP/body.md"
+          if [ "$(gh pr list --head upstream-sync --state open --json number --jq length)" = "0" ]; then
+            gh pr create --base main --head upstream-sync \
+              --title "Sync from upstream ClearURLs" --body-file "$RUNNER_TEMP/body.md"
+          else
+            gh pr edit upstream-sync --body-file "$RUNNER_TEMP/body.md"
+          fi
