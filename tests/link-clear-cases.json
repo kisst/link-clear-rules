@@ -262,5 +262,20 @@
     "strip": [
       "pnespid"
     ]
+  },
+  {
+    "url": "https://job-boards.greenhouse.io/company/jobs/123?gh_src=abc123",
+    "strip": [
+      "gh_src"
+    ]
+  },
+  {
+    "url": "https://careers.example.com/jobs?gh_jid=123&gh_src=abc123",
+    "strip": [
+      "gh_src"
+    ],
+    "keep": [
+      "gh_jid"
+    ]
   }
 ]
