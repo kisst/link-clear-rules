@@ -151,5 +151,21 @@
       "_nkw",
       "_sacat"
     ]
+  },
+  {
+    "url": "https://www.aliexpress.com/item/1005004300540338.html?spm=a2g0o.detail.0.0&mp=1&pdp_npi=5%40dis%21USD&pdp_ext_f=%7B%7D&businessType=ProductDetail&srcSns=sns_Copy&spreadType=socialShare&pvid=abc&algo_exp_id=def&sku_id=12000028678700372",
+    "strip": [
+      "spm",
+      "pdp_npi",
+      "pdp_ext_f",
+      "businessType",
+      "srcSns",
+      "spreadType",
+      "pvid",
+      "algo_exp_id"
+    ],
+    "keep": [
+      "sku_id"
+    ]
   }
 ]
