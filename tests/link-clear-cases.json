@@ -186,5 +186,15 @@
       "curator_clanid",
       "snr"
     ]
+  },
+  {
+    "url": "https://www.airbnb.fr/rooms/12345?source_impression_id=p3_abc&federated_search_id=xyz&adults=2",
+    "strip": [
+      "source_impression_id",
+      "federated_search_id"
+    ],
+    "keep": [
+      "adults"
+    ]
   }
 ]
