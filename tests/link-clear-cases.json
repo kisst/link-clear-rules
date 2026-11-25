@@ -98,5 +98,15 @@
     "strip": [
       "xmt"
     ]
+  },
+  {
+    "url": "https://www.tiktok.com/@someone/video/7300000000000000000?is_from_webapp=1&sender_device=pc&lang=en",
+    "strip": [
+      "is_from_webapp",
+      "sender_device"
+    ],
+    "keep": [
+      "lang"
+    ]
   }
 ]
