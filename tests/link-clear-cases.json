@@ -132,5 +132,24 @@
       "launch_id",
       "session_id"
     ]
+  },
+  {
+    "url": "https://www.ebay.com/itm/123456789012?_skw=mechanical+keyboard&itmmeta=01ABCDEF&hash=item1&itmprp=enc%3AAQ&var=0",
+    "strip": [
+      "_skw",
+      "itmmeta",
+      "itmprp",
+      "hash"
+    ],
+    "keep": [
+      "var"
+    ]
+  },
+  {
+    "url": "https://www.ebay.com/sch/i.html?_nkw=keyboard&_sacat=0",
+    "keep": [
+      "_nkw",
+      "_sacat"
+    ]
   }
 ]
