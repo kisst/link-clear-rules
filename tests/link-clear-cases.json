@@ -1,7 +1,27 @@
 [
   {
     "url": "https://www.temu.com/goods.html?goods_id=601099512345678&_oak_page_source=417&refer_page_sn=10032&refer_source=0&_x_sessn_id=abc",
-    "strip": ["_oak_page_source", "refer_page_sn", "refer_source", "_x_sessn_id"],
-    "keep": ["goods_id"]
+    "strip": [
+      "_oak_page_source",
+      "refer_page_sn",
+      "refer_source",
+      "_x_sessn_id"
+    ],
+    "keep": [
+      "goods_id"
+    ]
+  },
+  {
+    "url": "https://x.com/kuruupdates/status/2115653182814613911?a=uimaJy3bBcbyfnLBrjs&s=20",
+    "strip": [
+      "a",
+      "s"
+    ]
+  },
+  {
+    "url": "https://twitter.com/user/status/1?a=uimaJy3bBcbyfnLBrjs",
+    "strip": [
+      "a"
+    ]
   }
 ]
