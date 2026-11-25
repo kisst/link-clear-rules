@@ -230,5 +230,18 @@
       "trk",
       "spm_x"
     ]
+  },
+  {
+    "url": "https://www.example.com/whitepaper?elqTrackId=abc&elq=def&elqaid=1&elqat=2&elqCampaignId=3&elqx=keep",
+    "strip": [
+      "elqTrackId",
+      "elq",
+      "elqaid",
+      "elqat",
+      "elqCampaignId"
+    ],
+    "keep": [
+      "elqx"
+    ]
   }
 ]
