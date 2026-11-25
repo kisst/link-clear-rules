@@ -167,5 +167,11 @@
     "keep": [
       "sku_id"
     ]
+  },
+  {
+    "url": "https://github.com/mmikeww/AHK-v2-script-converter/pull/200?notification_referrer_id=NT_kwDOBQCiV7Qx#event-13195027062",
+    "strip": [
+      "notification_referrer_id"
+    ]
   }
 ]
