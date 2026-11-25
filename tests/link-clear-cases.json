@@ -1,0 +1,7 @@
+[
+  {
+    "url": "https://www.temu.com/goods.html?goods_id=601099512345678&_oak_page_source=417&refer_page_sn=10032&refer_source=0&_x_sessn_id=abc",
+    "strip": ["_oak_page_source", "refer_page_sn", "refer_source", "_x_sessn_id"],
+    "keep": ["goods_id"]
+  }
+]
