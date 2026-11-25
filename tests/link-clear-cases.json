@@ -1,0 +1,281 @@
+[
+  {
+    "url": "https://www.temu.com/goods.html?goods_id=601099512345678&_oak_page_source=417&refer_page_sn=10032&refer_source=0&_x_sessn_id=abc",
+    "strip": [
+      "_oak_page_source",
+      "refer_page_sn",
+      "refer_source",
+      "_x_sessn_id"
+    ],
+    "keep": [
+      "goods_id"
+    ]
+  },
+  {
+    "url": "https://x.com/kuruupdates/status/2115653182814613911?a=uimaJy3bBcbyfnLBrjs&s=20",
+    "strip": [
+      "a",
+      "s"
+    ]
+  },
+  {
+    "url": "https://twitter.com/user/status/1?a=uimaJy3bBcbyfnLBrjs",
+    "strip": [
+      "a"
+    ]
+  },
+  {
+    "url": "https://www.instagram.com/reel/Db8u4REpzUb/?igsi=azBrY2s1NDd&utm_source=ig_web_copy_link",
+    "strip": [
+      "igsi",
+      "utm_source"
+    ]
+  },
+  {
+    "url": "https://www.instagram.com/reel/C1a2b3c4d5e/?exln=dXNlcnRyYWNr",
+    "strip": [
+      "exln"
+    ]
+  },
+  {
+    "url": "https://www.instagram.com/p/C1a2b3c4d5e/?stkn=MTIzNDU2Nzg5&img_index=2",
+    "strip": [
+      "stkn"
+    ],
+    "keep": [
+      "img_index"
+    ]
+  },
+  {
+    "url": "https://l.instagram.com/?u=https%3A%2F%2Fexample.com%2Fpage&e=AT0abc",
+    "redirect": "https://example.com/page"
+  },
+  {
+    "url": "https://www.instagram.com/accounts/login/?next=%2F&u=javascript%3Aalert(1)",
+    "redirect": null
+  },
+  {
+    "url": "https://vk.com/away.php?to=https%3A%2F%2Fexample.com%2F&cc_key=",
+    "redirect": "https://example.com/"
+  },
+  {
+    "url": "https://vk.com/away.php?utf=1&to=https%3A%2F%2Fexample.com%2F",
+    "redirect": "https://example.com/"
+  },
+  {
+    "url": "https://vk.com/away.php?to=javascript%3Aalert(1)",
+    "redirect": null
+  },
+  {
+    "url": "https://youtu.be/dQw4w9WgXcQ?is=AbCdEfGh123&t=42",
+    "strip": [
+      "is"
+    ],
+    "keep": [
+      "t"
+    ]
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&is=AbCdEfGh123",
+    "strip": [
+      "is"
+    ],
+    "keep": [
+      "v"
+    ]
+  },
+  {
+    "url": "https://www.threads.com/@someone/post/C1a2b3c4d5e?xmt=AQGzAbCdEf&slof=1",
+    "strip": [
+      "xmt"
+    ],
+    "keep": [
+      "slof"
+    ]
+  },
+  {
+    "url": "https://www.threads.net/@someone/post/C1a2b3c4d5e?xmt=AQGzAbCdEf",
+    "strip": [
+      "xmt"
+    ]
+  },
+  {
+    "url": "https://www.tiktok.com/@someone/video/7300000000000000000?is_from_webapp=1&sender_device=pc&lang=en",
+    "strip": [
+      "is_from_webapp",
+      "sender_device"
+    ],
+    "keep": [
+      "lang"
+    ]
+  },
+  {
+    "url": "https://www.bilibili.com/video/BV1tMVm6JEfz/?trackid=web_related_0.router-related-2589621-48s8n.1781968962448.760&p=2",
+    "strip": [
+      "trackid"
+    ],
+    "keep": [
+      "p"
+    ]
+  },
+  {
+    "url": "https://m.bilibili.com/video/BV1tMVm6JEfz?spmid=main.ugc-video-detail.0.0&from_spmid=main.my-history.0.0",
+    "strip": [
+      "spmid",
+      "from_spmid"
+    ]
+  },
+  {
+    "url": "https://live.bilibili.com/12345?trackid=live_1&launch_id=1000&session_id=abc",
+    "strip": [
+      "trackid",
+      "launch_id",
+      "session_id"
+    ]
+  },
+  {
+    "url": "https://www.ebay.com/itm/123456789012?_skw=mechanical+keyboard&itmmeta=01ABCDEF&hash=item1&itmprp=enc%3AAQ&var=0",
+    "strip": [
+      "_skw",
+      "itmmeta",
+      "itmprp",
+      "hash"
+    ],
+    "keep": [
+      "var"
+    ]
+  },
+  {
+    "url": "https://www.ebay.com/sch/i.html?_nkw=keyboard&_sacat=0",
+    "keep": [
+      "_nkw",
+      "_sacat"
+    ]
+  },
+  {
+    "url": "https://www.aliexpress.com/item/1005004300540338.html?spm=a2g0o.detail.0.0&mp=1&pdp_npi=5%40dis%21USD&pdp_ext_f=%7B%7D&businessType=ProductDetail&srcSns=sns_Copy&spreadType=socialShare&pvid=abc&algo_exp_id=def&sku_id=12000028678700372",
+    "strip": [
+      "spm",
+      "pdp_npi",
+      "pdp_ext_f",
+      "businessType",
+      "srcSns",
+      "spreadType",
+      "pvid",
+      "algo_exp_id"
+    ],
+    "keep": [
+      "sku_id"
+    ]
+  },
+  {
+    "url": "https://github.com/mmikeww/AHK-v2-script-converter/pull/200?notification_referrer_id=NT_kwDOBQCiV7Qx#event-13195027062",
+    "strip": [
+      "notification_referrer_id"
+    ]
+  },
+  {
+    "url": "https://www.linkedin.com/in/someone/?isSelfProfile=false",
+    "strip": [
+      "isSelfProfile"
+    ]
+  },
+  {
+    "url": "https://store.steampowered.com/app/3669620/Warhammer_Survivors/?curator_clanid=39049601&snr=1_5_9__205",
+    "strip": [
+      "curator_clanid",
+      "snr"
+    ]
+  },
+  {
+    "url": "https://www.airbnb.fr/rooms/12345?source_impression_id=p3_abc&federated_search_id=xyz&adults=2",
+    "strip": [
+      "source_impression_id",
+      "federated_search_id"
+    ],
+    "keep": [
+      "adults"
+    ]
+  },
+  {
+    "url": "https://shop.example/product?id=7&ttclid=E.C.P.abc&li_fat_id=abc&gbraid=0AAA&wbraid=Cj0&_hsmi=123&hsa_acc=1&hsa_cam=2&_kx=abc.XYZ&_cio_id=abc&ajs_uid=42&ajs_prop_campaign=x&sh_kit=abc&spMailingID=1&spUserID=2&omnisendContactID=abc&at_recipient_id=a&trk_msg=b",
+    "strip": [
+      "ttclid",
+      "li_fat_id",
+      "gbraid",
+      "wbraid",
+      "_hsmi",
+      "hsa_acc",
+      "hsa_cam",
+      "_kx",
+      "_cio_id",
+      "ajs_uid",
+      "ajs_prop_campaign",
+      "sh_kit",
+      "spMailingID",
+      "spUserID",
+      "omnisendContactID",
+      "at_recipient_id",
+      "trk_msg"
+    ],
+    "keep": [
+      "id"
+    ]
+  },
+  {
+    "url": "https://example.com/?kx=1&braid=2&trk=3&spm_x=4",
+    "keep": [
+      "kx",
+      "braid",
+      "trk",
+      "spm_x"
+    ]
+  },
+  {
+    "url": "https://www.example.com/whitepaper?elqTrackId=abc&elq=def&elqaid=1&elqat=2&elqCampaignId=3&elqx=keep",
+    "strip": [
+      "elqTrackId",
+      "elq",
+      "elqaid",
+      "elqat",
+      "elqCampaignId"
+    ],
+    "keep": [
+      "elqx"
+    ]
+  },
+  {
+    "url": "https://roadmap.sh/?_bhlid=a94e3f837864ef3cb91797dac40802f773fe5743",
+    "strip": [
+      "_bhlid"
+    ]
+  },
+  {
+    "url": "https://example.ru/page?ysclid=lx1abc2def3&pk_cid=abc123&pk_campaign=keep",
+    "strip": [
+      "ysclid",
+      "pk_cid"
+    ]
+  },
+  {
+    "url": "https://www.tvnet.lv/7966163/article?pnespid=abc.def",
+    "strip": [
+      "pnespid"
+    ]
+  },
+  {
+    "url": "https://job-boards.greenhouse.io/company/jobs/123?gh_src=abc123",
+    "strip": [
+      "gh_src"
+    ]
+  },
+  {
+    "url": "https://careers.example.com/jobs?gh_jid=123&gh_src=abc123",
+    "strip": [
+      "gh_src"
+    ],
+    "keep": [
+      "gh_jid"
+    ]
+  }
+]
