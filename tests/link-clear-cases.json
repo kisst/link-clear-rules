@@ -256,5 +256,11 @@
       "ysclid",
       "pk_cid"
     ]
+  },
+  {
+    "url": "https://www.tvnet.lv/7966163/article?pnespid=abc.def",
+    "strip": [
+      "pnespid"
+    ]
   }
 ]
