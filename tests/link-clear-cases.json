@@ -243,5 +243,11 @@
     "keep": [
       "elqx"
     ]
+  },
+  {
+    "url": "https://roadmap.sh/?_bhlid=a94e3f837864ef3cb91797dac40802f773fe5743",
+    "strip": [
+      "_bhlid"
+    ]
   }
 ]
