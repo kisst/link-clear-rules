@@ -108,5 +108,29 @@
     "keep": [
       "lang"
     ]
+  },
+  {
+    "url": "https://www.bilibili.com/video/BV1tMVm6JEfz/?trackid=web_related_0.router-related-2589621-48s8n.1781968962448.760&p=2",
+    "strip": [
+      "trackid"
+    ],
+    "keep": [
+      "p"
+    ]
+  },
+  {
+    "url": "https://m.bilibili.com/video/BV1tMVm6JEfz?spmid=main.ugc-video-detail.0.0&from_spmid=main.my-history.0.0",
+    "strip": [
+      "spmid",
+      "from_spmid"
+    ]
+  },
+  {
+    "url": "https://live.bilibili.com/12345?trackid=live_1&launch_id=1000&session_id=abc",
+    "strip": [
+      "trackid",
+      "launch_id",
+      "session_id"
+    ]
   }
 ]
