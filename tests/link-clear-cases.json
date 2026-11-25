@@ -45,5 +45,25 @@
     "keep": [
       "img_index"
     ]
+  },
+  {
+    "url": "https://l.instagram.com/?u=https%3A%2F%2Fexample.com%2Fpage&e=AT0abc",
+    "redirect": "https://example.com/page"
+  },
+  {
+    "url": "https://www.instagram.com/accounts/login/?next=%2F&u=javascript%3Aalert(1)",
+    "redirect": null
+  },
+  {
+    "url": "https://vk.com/away.php?to=https%3A%2F%2Fexample.com%2F&cc_key=",
+    "redirect": "https://example.com/"
+  },
+  {
+    "url": "https://vk.com/away.php?utf=1&to=https%3A%2F%2Fexample.com%2F",
+    "redirect": "https://example.com/"
+  },
+  {
+    "url": "https://vk.com/away.php?to=javascript%3Aalert(1)",
+    "redirect": null
   }
 ]
