@@ -196,5 +196,39 @@
     "keep": [
       "adults"
     ]
+  },
+  {
+    "url": "https://shop.example/product?id=7&ttclid=E.C.P.abc&li_fat_id=abc&gbraid=0AAA&wbraid=Cj0&_hsmi=123&hsa_acc=1&hsa_cam=2&_kx=abc.XYZ&_cio_id=abc&ajs_uid=42&ajs_prop_campaign=x&sh_kit=abc&spMailingID=1&spUserID=2&omnisendContactID=abc&at_recipient_id=a&trk_msg=b",
+    "strip": [
+      "ttclid",
+      "li_fat_id",
+      "gbraid",
+      "wbraid",
+      "_hsmi",
+      "hsa_acc",
+      "hsa_cam",
+      "_kx",
+      "_cio_id",
+      "ajs_uid",
+      "ajs_prop_campaign",
+      "sh_kit",
+      "spMailingID",
+      "spUserID",
+      "omnisendContactID",
+      "at_recipient_id",
+      "trk_msg"
+    ],
+    "keep": [
+      "id"
+    ]
+  },
+  {
+    "url": "https://example.com/?kx=1&braid=2&trk=3&spm_x=4",
+    "keep": [
+      "kx",
+      "braid",
+      "trk",
+      "spm_x"
+    ]
   }
 ]
