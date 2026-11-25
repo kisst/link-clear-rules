@@ -65,5 +65,23 @@
   {
     "url": "https://vk.com/away.php?to=javascript%3Aalert(1)",
     "redirect": null
+  },
+  {
+    "url": "https://youtu.be/dQw4w9WgXcQ?is=AbCdEfGh123&t=42",
+    "strip": [
+      "is"
+    ],
+    "keep": [
+      "t"
+    ]
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&is=AbCdEfGh123",
+    "strip": [
+      "is"
+    ],
+    "keep": [
+      "v"
+    ]
   }
 ]
