@@ -249,5 +249,12 @@
     "strip": [
       "_bhlid"
     ]
+  },
+  {
+    "url": "https://example.ru/page?ysclid=lx1abc2def3&pk_cid=abc123&pk_campaign=keep",
+    "strip": [
+      "ysclid",
+      "pk_cid"
+    ]
   }
 ]
