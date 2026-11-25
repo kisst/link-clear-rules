@@ -83,5 +83,20 @@
     "keep": [
       "v"
     ]
+  },
+  {
+    "url": "https://www.threads.com/@someone/post/C1a2b3c4d5e?xmt=AQGzAbCdEf&slof=1",
+    "strip": [
+      "xmt"
+    ],
+    "keep": [
+      "slof"
+    ]
+  },
+  {
+    "url": "https://www.threads.net/@someone/post/C1a2b3c4d5e?xmt=AQGzAbCdEf",
+    "strip": [
+      "xmt"
+    ]
   }
 ]
