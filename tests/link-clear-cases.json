@@ -23,5 +23,27 @@
     "strip": [
       "a"
     ]
+  },
+  {
+    "url": "https://www.instagram.com/reel/Db8u4REpzUb/?igsi=azBrY2s1NDd&utm_source=ig_web_copy_link",
+    "strip": [
+      "igsi",
+      "utm_source"
+    ]
+  },
+  {
+    "url": "https://www.instagram.com/reel/C1a2b3c4d5e/?exln=dXNlcnRyYWNr",
+    "strip": [
+      "exln"
+    ]
+  },
+  {
+    "url": "https://www.instagram.com/p/C1a2b3c4d5e/?stkn=MTIzNDU2Nzg5&img_index=2",
+    "strip": [
+      "stkn"
+    ],
+    "keep": [
+      "img_index"
+    ]
   }
 ]
