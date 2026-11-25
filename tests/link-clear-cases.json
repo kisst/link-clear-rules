@@ -173,5 +173,11 @@
     "strip": [
       "notification_referrer_id"
     ]
+  },
+  {
+    "url": "https://www.linkedin.com/in/someone/?isSelfProfile=false",
+    "strip": [
+      "isSelfProfile"
+    ]
   }
 ]
