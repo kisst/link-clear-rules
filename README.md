@@ -46,6 +46,25 @@ Additions so far:
 | Provider | Why | Upstream |
 |----------|-----|----------|
 | `temu.com` | Product links carry about a dozen tracking parameters | [ClearURLs/Rules#177](https://github.com/ClearURLs/Rules/issues/177) |
+| `twitter`, `x` | `a`, added by "Copy link" | [PR 354](https://github.com/ClearURLs/Rules/pull/354) |
+| `instagram` | `igsi`, `exln`, `stkn` share ids | [PR 321](https://github.com/ClearURLs/Rules/pull/321), [PR 350](https://github.com/ClearURLs/Rules/pull/350), [PR 332](https://github.com/ClearURLs/Rules/pull/332) |
+| `instagram`, `vk.com` | Redirects only to http(s) targets, only on the real link wrappers | [MR 89](https://gitlab.com/ClearURLs/rules/-/merge_requests/89) |
+| `youtube` | `is`, the mobile app's `si` | [PR 191](https://github.com/ClearURLs/Rules/pull/191) |
+| `threads` (new) | `xmt` on threads.com and threads.net | [PR 179](https://github.com/ClearURLs/Rules/pull/179) |
+| `tiktok.com` | `is_from_webapp`, `sender_device` | [PR 199](https://github.com/ClearURLs/Rules/pull/199) |
+| `bilibili.com`, `live.bilibili.com` | `trackid`, `spmid`, `from_spmid`, `launch_id` | [PR 337](https://github.com/ClearURLs/Rules/pull/337), [PR 127](https://github.com/ClearURLs/Rules/pull/127), [MR 72](https://gitlab.com/ClearURLs/rules/-/merge_requests/72) |
+| `ebay` | `_skw`, `itmmeta`, `itmprp` | [issue 310](https://gitlab.com/ClearURLs/rules/-/issues/310) |
+| `aliexpress` | Share and recommendation ids (`sku_id` kept) | [issue 326](https://gitlab.com/ClearURLs/rules/-/issues/326), [PR 317](https://github.com/ClearURLs/Rules/pull/317) |
+| `github.com` | `notification_referrer_id` | [issue 114](https://github.com/ClearURLs/Rules/issues/114) |
+| `LinkedIn` | `isSelfProfile` | [issue 348](https://github.com/ClearURLs/Rules/issues/348) |
+| `steampowered` | `curator_clanid` | [issue 349](https://github.com/ClearURLs/Rules/issues/349) |
+| `airbnb` | Also airbnb.fr | [MR 75](https://gitlab.com/ClearURLs/rules/-/merge_requests/75) |
+| `globalRules` | Ad-click and email ids: `ttclid`, `li_fat_id`, `[gw]braid`, HubSpot, Klaviyo, Segment and others | [MR 90](https://gitlab.com/ClearURLs/rules/-/merge_requests/90) |
+| `globalRules` | Eloqua `elq*` | [MR 1](https://gitlab.com/ClearURLs/rules/-/merge_requests/1) |
+| `globalRules` | beehiiv `_bhlid` | [PR 190](https://github.com/ClearURLs/Rules/pull/190) |
+| `globalRules` | `ysclid`, `pk_cid` | [issue 350](https://gitlab.com/ClearURLs/rules/-/issues/350) |
+| `globalRules` | Piano `pnespid` | [issue 112](https://github.com/ClearURLs/Rules/issues/112) |
+| `globalRules` | Greenhouse `gh_src` | [issue 345](https://gitlab.com/ClearURLs/rules/-/issues/345) |
 
 ## Validation
 
