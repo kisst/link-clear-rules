@@ -179,5 +179,12 @@
     "strip": [
       "isSelfProfile"
     ]
+  },
+  {
+    "url": "https://store.steampowered.com/app/3669620/Warhammer_Survivors/?curator_clanid=39049601&snr=1_5_9__205",
+    "strip": [
+      "curator_clanid",
+      "snr"
+    ]
   }
 ]
